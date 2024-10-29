@@ -1,0 +1,922 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import React from 'react'
+// import Home from './components/home';
+
+function App() {
+  return (
+    <>
+      <h1>Hello</h1>
+      {/* <Home /> */}
+
+      {/* <!-- HEADER START --> */}
+      <div className="background">
+        <nav className="navbar navbar-expand-lg">
+          <div className="container">
+            <a className="navbar-brand" href="./index.html">
+              <img
+                src="https://htmldesigntemplates.com/html/eventiz/images/logo-white.png"
+                alt=""
+              />
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              onClick={myFunction}
+            >
+              <span className="fa fa-bars" style={{ color: 'white' }}></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a className="nav-link active text-white" aria-current="page" href="#">
+                    HOME
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link active text-white" aria-current="page" href="#">
+                    ABOUT US
+                  </a>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link active dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    PAGES
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        A
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        B
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        C
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link active dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    SHOP
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        A
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        B
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        C
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link active dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    NEWS
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        A
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        B
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        C
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link active text-white" aria-current="page" href="#">
+                    CONTACT US
+                  </a>
+                </li>
+                <form className="d-flex" role="search">
+                  <input
+                    id="search-input"
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    style={{ display: 'none' }}
+                  />
+                  <button className="btn text-white" type="button" id="search-icon">
+                    <i className="fa fa-search"></i>
+                  </button>
+                  <button
+                    className="btn btn-outline-success"
+                    type="submit"
+                    id="search-btn"
+                    style={{ display: 'none' }}
+                  >
+                    Search
+                  </button>
+                </form>
+              </ul>
+              <div className="d-flex justify-content-center">
+                <a href="#" className="a-tag">
+                  BUY TICKET
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        {/* <!-- HEADER END --> */}
+        <div>
+          <div className="container heading">
+            <div className="row align-items-start">
+              <div className="col">
+                <h4 className="pink">Big Event 2024</h4>
+                <h1 className="text-white">
+                  <span className="head">World Biggest 2023</span>
+                  <br />
+                  <span className="head">CONFERENCE</span>
+                </h1>
+                <h5 className="text-white">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. At eligendi dolorem distinctio ab.
+                </h5>
+              </div>
+              <div className="col">
+                {/* One of two columns */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* TIMER START */}
+      <div style={{ position: 'relative', top: '-50px' }}>
+        <div className="row">
+          <div className="col-md-8 bg-clr">
+            <div className="row timer bg-clr d-flex align-items-center">
+              <div className="col-sm countdown-item">
+                <span className="time">00</span>
+                <span className="label">Days</span>
+              </div>
+              <div className="col-sm countdown-item">
+                <span className="time">00</span>
+                <span className="label">Hours</span>
+              </div>
+              <div className="col-sm countdown-item">
+                <span className="time">00</span>
+                <span className="label">Minutes</span>
+              </div>
+              <div className="col-sm countdown-item">
+                <span className="time">00</span>
+                <span className="label">Seconds</span>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            {/* One of three columns */}
+          </div>
+        </div>
+      </div>
+      {/* TIMER END */}
+      {/* MAIN PAGE START */}
+      {/* Event section start */}
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-sm">
+            <div className="card" style={{ width: '100%' }}>
+              <div className="card-body">
+                <div className="card-icon">👥</div>
+                <div className="card-title">Event Conferences</div>
+                <div className="card-text">Duis aute irure dolor in reprehenderit</div>
+                <a href="#" className="learn-more">Learn More </a>
+              </div>
+            </div>
+            {/* Additional Card */}
+            <div className="card mt-4 mb-4" style={{ width: '100%' }}>
+              <div className="card-body">
+                <div className="card-icon">🚩</div>
+                <div className="card-title">Culture Leadership</div>
+                <div className="card-text">Duis aute irure dolor in reprehenderit</div>
+                <a href="#" className="learn-more">Learn More </a>
+              </div>
+            </div>
+          </div>
+          {/* Another Card Column */}
+          <div className="col-sm mb-4 d-flex align-items-center justify-content-center">
+            <div className="card" style={{ width: '100%' }}>
+              <div className="card-body">
+                <div className="card-icon">⚙️</div>
+                <div className="card-title">Digital Marketing</div>
+                <div className="card-text">Duis aute irure dolor in reprehenderit</div>
+                <a href="#" className="learn-more">Learn More </a>
+              </div>
+            </div>
+          </div>
+          {/* Content Column */}
+          <div className="col-sm d-flex align-items-center justify-content-center">
+            <div>
+              <h1>Why You Should Join The <span className="clr">EVENTS?</span></h1>
+              <p className="mt-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <div className="d-flex justify-content-center mt-5 mb-4">
+                <a href="#" className="a-tag">Join Event </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Event section end */}
+      {/* Conference Section Start */}
+      < div className="container" style={{ marginTop: '100px' }}>
+        <div className="row">
+          <div className="col-sm d-flex align-items-center justify-content-center mb-4">
+            <div>
+              <p className="event-section">Conference Organisation</p>
+              <h1 className="mb-4">
+                Conference,
+                <br />
+                Seminars & <span className="clr">EVENTS</span>
+              </h1>
+              <p className="mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+                ip suspendisse ultrices gravida. Risus commodo.
+              </p>
+              <div className="d-flex justify-content-center mt-5 mb-4">
+                <a href="#" className="a-tag">Discover Now &gt;</a>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm d-flex align-items-center justify-content-center mb-4">
+            <div className="image-section">
+              <img className="one" src="./images/img-1.jpg" alt="Event Image 1" />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="image-section d-flex align-items-center justify-content-center">
+              <img className="two" src="./images/img-2.jpg" alt="Event Image 2" />
+            </div>
+            <div className="mt-4 mb-4 image-section d-flex align-items-center justify-content-center">
+              <img className="three" src="./images/img-3.jpg" alt="Event Image 3" />
+            </div>
+          </div>
+        </div>
+      </div >
+      {/* Conference Section End */}
+
+      {/* Stats Section Start */}
+      <div className="container bg-light mt-4 mb-4">
+        <div className="row stats-section">
+          <div className="col-sm stats">
+            <h2>152</h2>
+            <p>Daily Visitors</p>
+          </div>
+          <div className="col-sm">
+            <h2>35</h2>
+            <p>Delivery Monthly</p>
+          </div>
+          <div className="col-sm">
+            <h2>29</h2>
+            <p>Positive Feedback</p>
+          </div>
+          <div className="col-sm">
+            <h2>72</h2>
+            <p>Award Winning</p>
+          </div>
+        </div>
+      </div>
+      {/* Stats Section End */}
+
+      {/* Event Conference Organisation Start */}
+      <div className="container">
+        <div className="event-conf">
+          <p className="event-section">Event Conference Organisation</p>
+          <h1>
+            List Of Planned Events That <br />
+            Are <span className="clr">EXPECTED</span>
+          </h1>
+        </div>
+
+        {/* Event 1 */}
+        <div className="row bg-light">
+          <div className="col-sm">
+            <div
+              className="timing m-3 text-white card d-flex justify-content-center"
+              style={{ backgroundColor: '#ff4081', height: '170px' }}
+            >
+              <p>8:00 AM - 9:00 AM</p>
+              <h4>Opening Ceremony</h4>
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="event-details m-3">
+              <h3 className="text-primary">Introduce The Event</h3>
+              <p className="text-secondary">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              </p>
+              <p className="location text-primary">📍 Exploration Hall | 📍 Hall 01</p>
+            </div>
+          </div>
+          <div className="col-sm d-flex justify-content-center">
+            <div className="speaker-info m-3 d-flex align-items-center">
+              <img className="round-img" src="./images/img-4.jpg" alt="Speaker Image" />
+              <div>
+                <h5 className="speaker-name">Jesus Holland</h5>
+                <p className="text-secondary">Host & Speaker</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+
+        {/* Event 2 */}
+        <div className="row bg-light">
+          <div className="col-sm">
+            <div
+              className="timing m-3 text-white card d-flex justify-content-center"
+              style={{ backgroundColor: '#ff4081', height: '170px' }}
+            >
+              <p>8:00 AM - 9:00 AM</p>
+              <h4>Opening Ceremony</h4>
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="event-details m-3">
+              <h3 className="text-primary">Introduce The Event</h3>
+              <p className="text-secondary">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              </p>
+              <p className="location text-primary">📍 Exploration Hall | 📍 Hall 01</p>
+            </div>
+          </div>
+          <div className="col-sm d-flex justify-content-center">
+            <div className="speaker-info m-3 d-flex align-items-center">
+              <img className="round-img" src="./images/img-4.jpg" alt="Speaker Image" />
+              <div>
+                <h5 className="speaker-name">Jesus Holland</h5>
+                <p className="text-secondary">Host & Speaker</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+
+        {/* Event 3 */}
+        <div className="row bg-light">
+          <div className="col-sm">
+            <div
+              className="timing m-3 text-white card d-flex justify-content-center"
+              style={{ backgroundColor: '#ff4081', height: '170px' }}
+            >
+              <p>8:00 AM - 9:00 AM</p>
+              <h4>Opening Ceremony</h4>
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="event-details m-3">
+              <h3 className="text-primary">Introduce The Event</h3>
+              <p className="text-secondary">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              </p>
+              <p className="location text-primary">📍 Exploration Hall | 📍 Hall 01</p>
+            </div>
+          </div>
+          <div className="col-sm d-flex justify-content-center">
+            <div className="speaker-info m-3 d-flex align-items-center">
+              <img className="round-img" src="./images/img-4.jpg" alt="Speaker Image" />
+              <div>
+                <h5 className="speaker-name">Jesus Holland</h5>
+                <p className="text-secondary">Host & Speaker</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Event Conference Organisation End */}
+
+
+      {/* Featured Speaker Start */}
+      <div className="container">
+        <div className="col-sm d-flex align-items-center justify-content-center mb-4 mt-5">
+          <div>
+            <p className="event-section">Featured Speaker</p>
+            <h1 className="mb-4">
+              Experience Speaker With <br /> <span className="clr">KNOWLEDGE</span>
+            </h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm d-flex align-items-center justify-content-center">
+            <div className="image-section">
+              <img className="speak-1" src="./images/speaker-1.jpg" alt="Event Image 1" />
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="image-section d-flex align-items-center justify-content-center">
+              <img className="speak-2" src="./images/speaker-2.jpg" alt="Event Image 2" />
+            </div>
+            <div className="mt-4 image-section d-flex align-items-center justify-content-center">
+              <img className="speak-3" src="./images/speaker-3.jpg" alt="Event Image 3" />
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="image-section d-flex align-items-center justify-content-center">
+              <img className="speak-4" src="./images/speaker-4.jpg" alt="Event Image 4" />
+            </div>
+            <div className="mt-4 image-section d-flex align-items-center justify-content-center">
+              <img className="speak-5" src="./images/speaker-5.jpg" alt="Event Image 5" />
+            </div>
+          </div>
+
+          <div className="col-sm d-flex align-items-center justify-content-center">
+            <div className="image-section">
+              <img className="speak-6" src="./images/speaker-6.jpg" alt="Event Image 6" />
+            </div>
+          </div>
+          <div className="d-flex justify-content-center mt-5 mb-4">
+            <a href="" className="a-tag">
+              View All Speakers &gt;
+            </a>
+          </div>
+        </div>
+      </div>
+      {/* Featured Speaker End */}
+
+      {/* Pricing Table Start */}
+      <div className="container">
+        <div>
+          <p className="event-section">Pricing Table</p>
+          <h1>
+            Explore Flexible Our Pricing <br /> <span className="clr">PLANS</span>
+          </h1>
+        </div>
+
+        <div className="mt-5">
+          <div className="row justify-content-center">
+            {/* Basic Ticket */}
+            <div className="col-lg-3 col-md-6 mb-4">
+              <div className="card text-center border-0 shadow">
+                <div className="card-body">
+                  <h2 className="card-title">Basic Ticket</h2>
+                  <p className="card-subtitle mb-2 text-muted">Standard Package</p>
+                  <h1 className="price clr">
+                    $39.<span>99</span>
+                  </h1>
+                  <p>Person</p>
+                  <ul className="list-unstyled">
+                    <li>Second Balcony Seat</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Snack & Softdrink</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Certificates</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Private Access</li>
+                  </ul>
+                  <div className="d-flex justify-content-center">
+                    <a href="" className="a-tag mb-2">
+                      Purchase
+                    </a>
+                  </div>
+                  <p className="mt-2 text-muted" style={{ fontSize: '0.8rem' }}>
+                    *Please read our terms and conditions before ordering a ticket
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Silver Ticket */}
+            <div className="col-lg-3 col-md-6 mb-4">
+              <div className="card text-center border-0 shadow bg-primary text-white">
+                <div className="card-body">
+                  <h2 className="card-title">Silver Ticket</h2>
+                  <p className="card-subtitle mb-2">Pro Package</p>
+                  <h1 className="price clr">
+                    $59.<span>99</span>
+                  </h1>
+                  <p>Person</p>
+                  <ul className="list-unstyled">
+                    <li>Second Balcony Seat</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Snack & Softdrink</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Certificates</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Printed Materials</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Private Access</li>
+                  </ul>
+                  <div className="d-flex justify-content-center">
+                    <a href="" className="a-tag mb-2">
+                      Purchase
+                    </a>
+                  </div>
+                  <p className="mt-2 text-light" style={{ fontSize: '0.8rem' }}>
+                    *Please read our terms and conditions before ordering a ticket
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Gold Ticket */}
+            <div className="col-lg-3 col-md-6 mb-4">
+              <div className="card text-center border-0 shadow">
+                <div className="card-body">
+                  <h2 className="card-title">Gold Ticket</h2>
+                  <p className="card-subtitle mb-2 text-muted">Enterprise Package</p>
+                  <h1 className="price clr">
+                    $199.<span>99</span>
+                  </h1>
+                  <p>Person</p>
+                  <ul className="list-unstyled">
+                    <li>Second Balcony Seat</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Snack & Softdrink</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Certificates</li>
+                    <hr style={{ borderTop: 'dotted 1px' }} />
+                    <li>Private Access</li>
+                  </ul>
+                  <div className="d-flex justify-content-center">
+                    <a href="" className="a-tag mb-2">
+                      Purchase
+                    </a>
+                  </div>
+                  <p className="mt-2 text-muted" style={{ fontSize: '0.8rem' }}>
+                    *Please read our terms and conditions before ordering a ticket
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Pricing Table End */}
+
+      {/* Join Expo 2024 Start */}
+      <div className="background-expo">
+        <div className="container">
+          <div className="d-flex justify-content-center align-items-center text-center">
+            <div>
+              <p className="event-section">Join Expo 2024</p>
+              <h1 className="text-white">
+                Join Us At 20th Hero Nada <br /> Expo <span className="clr">2024</span>
+              </h1>
+            </div>
+          </div>
+          <div className="mt-5">
+            <div className="row mb-4">
+              <div className="col-lg-6 mx-auto">
+                <div className="card p-0 d-flex flex-row align-items-center">
+                  <div className="icon-box">
+                    <i className="fa fa-calendar" style={{ fontSize: '40px' }}></i>
+                  </div>
+                  <div className="me-4">
+                    <p className="mb-0">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row mb-4">
+              <div className="col-lg-6 mx-auto">
+                <div className="card p-0 d-flex flex-row align-items-center">
+                  <div className="icon-box">
+                    <i className="fa fa-list" style={{ fontSize: '40px' }}></i>
+                  </div>
+                  <div>
+                    <p className="mb-0">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Join Expo 2024 End */}
+      </div>
+
+
+      {/* Event Gallery Start */}
+      <div className="container" style={{ marginTop: '120px' }}>
+        <div className="d-flex justify-content-center align-items-center text-center">
+          <div>
+            <p className="event-section">Event Gallery</p>
+            <h1 className="">
+              Beautiful Snapshot Of Recent <br />
+              <span className="clr">EVENTS</span>
+            </h1>
+          </div>
+        </div>
+        <div className="row mt-4">
+          <div className="col-sm">
+            <div className="image-section d-flex align-items-center justify-content-center">
+              <img className="event-gallery" src="./images/Event Gallery-1.jpg" alt="Event Image 1" />
+            </div>
+            <div className="mt-4 image-section d-flex align-items-center justify-content-center">
+              <img className="event-gallery" src="./images/Event Gallery-2.jpg" alt="Event Image 2" />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="image-section d-flex align-items-center justify-content-center">
+              <img className="event-gallery" src="./images/Event Gallery-2.jpg" alt="Event Image 3" />
+            </div>
+            <div className="mt-4 image-section d-flex align-items-center justify-content-center">
+              <img className="event-gallery" src="./images/Event Gallery-1.jpg" alt="Event Image 4" />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="image-section d-flex align-items-center justify-content-center">
+              <img className="event-gallery" src="./images/Event Gallery-1.jpg" alt="Event Image 5" />
+            </div>
+            <div className="mt-4 image-section d-flex align-items-center justify-content-center">
+              <img className="event-gallery" src="./images/Event Gallery-2.jpg" alt="Event Image 6" />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Event Gallery End */}
+
+      {/* Our Testimonials Start */}
+      <div className="container">
+        <div>
+          <p className="event-section">Our Testimonials</p>
+          <h1>
+            What Peoples's Says About <br /> <span className="clr">EVENTIZ</span>
+          </h1>
+        </div>
+        <div className="row mt-5">
+          <div className="col-sm d-flex justify-content-center align-items-center">
+            <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+              <div className="carousel-inner">
+                <div className="carousel-item active" style={{ backgroundColor: '#eff6ff' }}>
+                  <div className="m-3">
+                    <p>
+                      <h1>"</h1>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum a simple Lorem Ipsum has been the industry's standard dummy hic et quidem.
+                    </p>
+                    <div className="d-flex align-items-center">
+                      <img src="./images/img-4.jpg" alt="Author" className="round-img" />
+                      <div>
+                        <div className="clr">Jared Erondu</div>
+                        <div className="">Supervisor</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="carousel-item" style={{ backgroundColor: '#eff6ff' }}>
+                  <div className="m-3">
+                    <p>
+                      <h1>"</h1>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum a simple Lorem Ipsum has been the industry's standard dummy hic et quidem.
+                    </p>
+                    <div className="d-flex align-items-center">
+                      <img src="./images/img-5.jpg" alt="Author" className="round-img" />
+                      <div>
+                        <div className="clr">Jared Erondu</div>
+                        <div className="">Supervisor</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm d-flex justify-content-center align-items-center">
+            <img className="testimonial-1" src="./images/testimonial-1.png" alt="" />
+          </div>
+        </div>
+      </div>
+      {/* Our Testimonials End */}
+
+      {/* Our Partners Start */}
+      <div className="container">
+        <div className="d-flex justify-content-center align-items-center text-center">
+          <div>
+            <p className="event-section">Our Partners</p>
+            <h1 className="">
+              Our Perfect Partners & <span className="clr">SPONSORS</span>
+            </h1>
+          </div>
+        </div>
+
+        <div className="row mt-3">
+          <div className="col-sm">
+            <div className="mb-4 partner-div d-flex align-items-center justify-content-center border">
+              <img className="partners-img" src="./images/Partners-img-1.png" alt="Partner 1" />
+            </div>
+            <div className="mb-4 partner-div d-flex align-items-center justify-content-center border">
+              <img className="partners-img" src="./images/Partners-img-2.png" alt="Partner 2" />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="mb-4 partner-div d-flex align-items-center justify-content-center border">
+              <img className="partners-img" src="./images/Partners-img-2.png" alt="Partner 3" />
+            </div>
+            <div className="mb-4 partner-div d-flex align-items-center justify-content-center border">
+              <img className="partners-img" src="./images/Partners-img-1.png" alt="Partner 4" />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="mb-4 partner-div d-flex align-items-center justify-content-center border">
+              <img className="partners-img" src="./images/Partners-img-1.png" alt="Partner 5" />
+            </div>
+            <div className="mb-4 partner-div d-flex align-items-center justify-content-center border">
+              <img className="partners-img" src="./images/Partners-img-2.png" alt="Partner 6" />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="mb-4 partner-div d-flex align-items-center justify-content-center border">
+              <img className="partners-img" src="./images/Partners-img-2.png" alt="Partner 7" />
+            </div>
+            <div className="mb-4 partner-div d-flex align-items-center justify-content-center border">
+              <img className="partners-img" src="./images/Partners-img-1.png" alt="Partner 8" />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Our Partners End */}
+
+      <div className="container">
+        <hr style={{ borderTop: 'dotted 1px' }} />
+      </div>
+
+      {/* Our News & Articles Start */}
+      <div className="container mb-5">
+        <div className="d-flex justify-content-center align-items-center text-center">
+          <div>
+            <p className="event-section">Our News & Articles</p>
+            <h1 className="">
+              Our News & <span className="clr">ARTICLES</span>
+            </h1>
+          </div>
+        </div>
+        <div className="row mt-4">
+          <div className="col-sm">
+            <div className="card text-start">
+              <div>
+                <img src="./images/article-1.jpg" className="card-img-top" alt="Blog Image 1" />
+              </div>
+              <div className="card-body">
+                <h5 className="card-title">How To Optimize Your Blog For High Ranking</h5>
+                <a href="#" className="clr" style={{ textDecoration: 'none' }}>CONTINUE READING</a>
+              </div>
+              <div className="card-footer">August 25, 2022 | No Comments</div>
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="card text-start">
+              <div>
+                <img src="./images/article-2.jpg" className="card-img-top" alt="Blog Image 2" />
+              </div>
+              <div className="card-body">
+                <h5 className="card-title">How To Optimize Your Blog For High Ranking</h5>
+                <a href="#" className="clr" style={{ textDecoration: 'none' }}>CONTINUE READING</a>
+              </div>
+              <div className="card-footer">August 25, 2022 | No Comments</div>
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="card text-start">
+              <div>
+                <img src="./images/article-3.jpg" className="card-img-top" alt="Blog Image 3" />
+              </div>
+              <div className="card-body">
+                <h5 className="card-title">How To Optimize Your Blog For High Ranking</h5>
+                <a href="#" className="clr" style={{ textDecoration: 'none' }}>CONTINUE READING</a>
+              </div>
+              <div className="card-footer">August 25, 2022 | No Comments</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Our News & Articles End */}
+      <footer>
+        <div className="ftr-bg">
+          <div className="container">
+            <div className="row text-white">
+              <div className="col-sm mt-5">
+                <a className="navbar-brand" href="./index.html">
+                  <img
+                    src="https://htmldesigntemplates.com/html/eventiz/images/logo-white.png"
+                    alt=""
+                  />
+                </a>
+                <p className="mt-3">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
+                  suspendisse leo neque iaculis molestie sagittis maecenas
+                  aenean eget molestie sagittis.
+                </p>
+                <div className="d-flex gap-4">
+                  <div className="d-flex align-items-center justify-content-center bg-white" style={{ width: '40px', height: '40px', borderRadius: '8px' }}>
+                    <a href="">
+                      <i className="fa fa-facebook" style={{ fontSize: '24px', color: '#3b5998' }}></i>
+                    </a>
+                  </div>
+                  <div className="d-flex align-items-center justify-content-center bg-white" style={{ width: '40px', height: '40px', borderRadius: '8px' }}>
+                    <a href="">
+                      <i className="fa fa-twitter" style={{ fontSize: '24px', color: '#1da1f2' }}></i>
+                    </a>
+                  </div>
+                  <div className="d-flex align-items-center justify-content-center bg-white" style={{ width: '40px', height: '40px', borderRadius: '8px' }}>
+                    <a href="">
+                      <i className="fa fa-instagram" style={{ fontSize: '24px', color: '#e1306c' }}></i>
+                    </a>
+                  </div>
+                  <div className="d-flex align-items-center justify-content-center bg-white" style={{ width: '40px', height: '40px', borderRadius: '8px' }}>
+                    <a href="">
+                      <i className="fa fa-linkedin" style={{ fontSize: '24px', color: '#0077b5' }}></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm mt-5 ms-5">
+                <h4>Quick Links</h4>
+                <p><a href="" className="text-white text-decoration-none"> About Us</a></p>
+                <p><a href="" className="text-white text-decoration-none"> Services</a></p>
+                <p><a href="" className="text-white text-decoration-none"> Speakers</a></p>
+                <p><a href="" className="text-white text-decoration-none"> Schedule</a></p>
+                <p><a href="" className="text-white text-decoration-none"> Ticket Pricing</a></p>
+                <p><a href="" className="text-white text-decoration-none"> Contact Us</a></p>
+              </div>
+              <div className="col-sm mt-5">
+                <h4>Get In Touch</h4>
+                <p className="mt-3">1616 Broadway NY, New York United States of America</p>
+                <div className="d-flex align-items-center me-3">
+                  <div className="d-flex align-items-center justify-content-center bg-white" style={{ width: '40px', height: '40px', borderRadius: '8px' }}>
+                    <a href="tel:+1234567890">
+                      <i className="fa fa-phone" style={{ fontSize: '24px', color: '#3b5998' }}></i>
+                    </a>
+                  </div>
+                  <span className="ms-2" style={{ fontSize: '18px' }}>123 567 5890</span>
+                </div>
+                <div className="d-flex align-items-center mt-3">
+                  <div className="d-flex align-items-center justify-content-center bg-white" style={{ width: '40px', height: '40px', borderRadius: '8px' }}>
+                    <a href="mailto:Info@Eventiz.Com">
+                      <i className="fa fa-envelope" style={{ fontSize: '24px', color: '#3b5998' }}></i>
+                    </a>
+                  </div>
+                  <span className="ms-2" style={{ fontSize: '18px' }}>Info@Eventiz.Com</span>
+                </div>
+              </div>
+              <div className="col-sm mt-5">
+                <h4>Subscribe To Our Newsletter</h4>
+                <p className="mt-3">New subscribers get 10% off your next order</p>
+                <form>
+                  <input type="email" id="fname" name="fname" placeholder="Email Address" />
+                </form>
+                <div className="mt-3">
+                  <a href="#" className="a-tag">Subscribe</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
+
+  )
+}
+
+export default App
