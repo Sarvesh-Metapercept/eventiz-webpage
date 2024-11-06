@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "product_name": "Bamboo Bucket",
+        "price": 18.00,
+        "product_image": "https://eventizvue.htmldesigntemplates.com/assets/Picnic%20Basket.H03.2k-cFsVd5xR.png"
+    },
+    {
+        "id": 2,
+        "product_name": "Ladies Tops",
+        "price": 21.00,
+        "product_image": "https://eventizvue.htmldesigntemplates.com/assets/Summer%20Cloth.H03.2k-mSq3scx6.png"
+    },
+    {
+        "id": 3,
+        "product_name": "Lewis Tshirt",
+        "price": 25.00,
+        "product_image": "https://eventizvue.htmldesigntemplates.com/assets/T-Shirt.H03.2k-FJjSoh2l.png"
+    },
+    {
+        "id": 4,
+        "product_name": "Leather Bag",
+        "price": 35.00,
+        "product_image": "https://eventizvue.htmldesigntemplates.com/assets/Travel%20Bag.H03.2k-IPt6QVG_.png"
+    },
+    {
+        "id": 5,
+        "product_name": "London Tshirt",
+        "price": 45.00,
+        "product_image": "https://eventizvue.htmldesigntemplates.com/assets/Woman%20Short%20Sleeve%20Shirt.H03.2k-k6CUSeB9.png"
+    },
+    {
+        "id": 6,
+        "product_name": "Yellow Sofa Set",
+        "price": 50.00,
+        "product_image": "https://eventizvue.htmldesigntemplates.com/assets/Yellow%20Cloth%20Puff.H03.2k-0XMVapxE.png"
+    }
+]

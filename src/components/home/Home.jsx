@@ -3,6 +3,33 @@ import React from 'react'
 function home() {
     return (
         <div>
+            {/* TIMER START */}
+            <div className="" style={{ position: "relative", top: "-50px" }}>
+                <div className="row">
+                    <div className="col-md-8 bg-clr">
+                        <div className="row timer bg-clr d-flex align-items-center">
+                            <div className="col-sm countdown-item">
+                                <span className="time">00</span>
+                                <span className="label">Days</span>
+                            </div>
+                            <div className="col-sm countdown-item">
+                                <span className="time">00</span>
+                                <span className="label">Hours</span>
+                            </div>
+                            <div className="col-sm countdown-item">
+                                <span className="time">00</span>
+                                <span className="label">Minutes</span>
+                            </div>
+                            <div className="col-sm countdown-item">
+                                <span className="time">00</span>
+                                <span className="label">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4">{/* One of three columns */}</div>
+                </div>
+            </div>
+            {/* TIMER END */}
             {/* MAIN PAGE START */}
             <main>
                 {/* event section start */}

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-
-function Header() {
+function Header({ children }) {
     const [isDarkNav, setIsDarkNav] = useState(false);
 
     const toggleDarkNav = () => {
@@ -19,7 +19,7 @@ function Header() {
             <div className="background">
                 <nav className="navbar navbar-expand-lg">
                     <div className="container">
-                        <a className="navbar-brand" href="./index.html">
+                        <a className="navbar-brand" href="/">
                             <img
                                 src="https://htmldesigntemplates.com/html/eventiz/images/logo-white.png"
                                 alt=""
@@ -100,19 +100,24 @@ function Header() {
                                     </a>
                                     <ul className="dropdown-menu">
                                         <li>
-                                            <a className="dropdown-item" href="#">
-                                                A
-                                            </a>
+                                            <Link className="dropdown-item" to="/product-list">
+                                                Product Lists
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" href="#">
-                                                B
-                                            </a>
+                                        <Link className="dropdown-item" to="/product-detail">
+                                                Product Detail
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" href="#">
-                                                C
-                                            </a>
+                                        <Link className="dropdown-item" to="/product-cart">
+                                                Cart
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className="dropdown-item" to="/product-checkout">
+                                                Checkout
+                                            </Link>
                                         </li>
                                     </ul>
                                 </li>
@@ -187,51 +192,13 @@ function Header() {
                     </div>
                 </nav>
                 {/* HEADER END */}
-                <div className="container heading">
-                    <div className="row align-items-start">
-                        <div className="col">
-                            <h4 className="pink">Big Event 2024</h4>
-                            <h1 className="text-white">
-                                <span className="head">World Biggest 2023</span>
-                                <br />
-                                <span className="head">CONFERENCE</span>
-                            </h1>
-                            <h5 className="text-white">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. At
-                                eligendi dolorem distinctio ab.
-                            </h5>
-                        </div>
-                        <div className="col">{/* One of two columns */}</div>
-                    </div>
-                </div>
+
+                {/* Children */}
+                {children}
+
+                
             </div>
-            {/* TIMER START */}
-            <div className="" style={{ position: "relative", top: "-50px" }}>
-                <div className="row">
-                    <div className="col-md-8 bg-clr">
-                        <div className="row timer bg-clr d-flex align-items-center">
-                            <div className="col-sm countdown-item">
-                                <span className="time">00</span>
-                                <span className="label">Days</span>
-                            </div>
-                            <div className="col-sm countdown-item">
-                                <span className="time">00</span>
-                                <span className="label">Hours</span>
-                            </div>
-                            <div className="col-sm countdown-item">
-                                <span className="time">00</span>
-                                <span className="label">Minutes</span>
-                            </div>
-                            <div className="col-sm countdown-item">
-                                <span className="time">00</span>
-                                <span className="label">Seconds</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">{/* One of three columns */}</div>
-                </div>
-            </div>
-            {/* TIMER END */}
+
         </div>
     )
 }
