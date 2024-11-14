@@ -15,7 +15,7 @@ function PDetail() {
             return;
         }
 
-        fetch('http://localhost:5000/api/products')
+        fetch('https://eventiz-webpage-backend.onrender.com/api/products')
             .then(response => response.json())
             .then(products => {
                 const foundProduct = products.find(p => p.id == productId);
