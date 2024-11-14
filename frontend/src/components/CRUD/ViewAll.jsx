@@ -12,7 +12,7 @@ function ViewAll() {
     }, []);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/api/products/${id}`, {
+        fetch(`https://eventiz-webpage-backend.onrender.com/api/products/${id}`, {
             method: 'DELETE',
         })
             .then(response => {
