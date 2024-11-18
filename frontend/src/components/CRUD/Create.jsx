@@ -14,7 +14,7 @@ function Create() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:5000/api/products', {
+        fetch('https://eventiz-webpage-backend.onrender.com/api/products', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

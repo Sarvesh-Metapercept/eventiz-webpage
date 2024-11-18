@@ -15,7 +15,7 @@ function Update() {
     // Fetch the product data based on the product ID
     useEffect(() => {
         if (productId) {
-            fetch(`http://localhost:5000/api/products/${productId}`)
+            fetch(`https://eventiz-webpage-backend.onrender.com/api/products/${productId}`)
                 .then(response => response.json())
                 .then(data => setProduct(data))
                 .catch(error => console.error('Error fetching product:', error));
@@ -26,7 +26,7 @@ function Update() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:5000/api/products/${productId}`, {
+        fetch(`https://eventiz-webpage-backend.onrender.com/api/products/${productId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(product),

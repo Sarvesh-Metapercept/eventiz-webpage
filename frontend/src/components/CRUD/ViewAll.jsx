@@ -5,14 +5,14 @@ function ViewAll() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/products')
+        fetch('https://eventiz-webpage-backend.onrender.com/api/products')
             .then(response => response.json())
             .then(data => setProducts(data))
             .catch(error => console.error('Error loading JSON:', error));
     }, []);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/api/products/${id}`, {
+        fetch(`https://eventiz-webpage-backend.onrender.com/api/products/${id}`, {
             method: 'DELETE',
         })
             .then(response => {
