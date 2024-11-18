@@ -1,62 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { CountDown } from './CountDown';
+import { ConferenceCard } from './ConferenceCard';
+import { JoinExpoCard } from './JoinExpoCard';
+import { EventSnapshots } from './EventSnapshots';
 
 function home() {
-    const targetDate = new Date("2024-12-31T23:59:59"); // Set your target date here
-
-    const calculateTimeLeft = () => {
-        const now = new Date();
-        const timeDifference = targetDate - now;
-
-        if (timeDifference <= 0) return null;
-
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-        return { days, hours, minutes, seconds };
-    };
-
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
-        }, 1000);
-
-        // Cleanup the interval on component unmount
-        return () => clearInterval(timer);
-    }, []);
-
+    
     return (
         <div>
-            {/* TIMER START */}
-            <div className="container-fluid" style={{ position: "relative", top: "-50px", overflowX: "hidden" }}>
-            <div className="row">
-                <div className="col-md-8 bg-clr">
-                    <div className="row timer bg-clr d-flex align-items-center">
-                        <div className="col-sm countdown-item">
-                            <span className="time">{timeLeft ? String(timeLeft.days).padStart(2, '0') : '00'}</span>
-                            <span className="label">Days</span>
-                        </div>
-                        <div className="col-sm countdown-item">
-                            <span className="time">{timeLeft ? String(timeLeft.hours).padStart(2, '0') : '00'}</span>
-                            <span className="label">Hours</span>
-                        </div>
-                        <div className="col-sm countdown-item">
-                            <span className="time">{timeLeft ? String(timeLeft.minutes).padStart(2, '0') : '00'}</span>
-                            <span className="label">Minutes</span>
-                        </div>
-                        <div className="col-sm countdown-item">
-                            <span className="time">{timeLeft ? String(timeLeft.seconds).padStart(2, '0') : '00'}</span>
-                            <span className="label">Seconds</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-4">{/* One of three columns */}</div>
-            </div>
-        </div>
-            {/* TIMER END */}
+            <CountDown />;
             {/* MAIN PAGE START */}
             <main>
                 {/* event section start */}
@@ -199,116 +151,11 @@ function home() {
                             <span className="clr">EXPECTED</span>
                         </h1>
                     </div>
-                    <div className="row bg-light">
-                        <div className="col-sm">
-                            <div
-                                className="timing m-3 text-white card d-flex justify-content-center"
-                                style={{ backgroundColor: "#ff4081", height: 170 }}
-                            >
-                                <p>8:00 AM - 9:00 AM</p>
-                                <h4>Opening Ceremony</h4>
-                            </div>
-                        </div>
-                        <div className="col-sm">
-                            <div className="event-details m-3">
-                                <h3 className="text-primary">Introduce The Event</h3>
-                                <p className="text-secondary">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                                </p>
-                                <p className="location text-primary">
-                                    📍 Exploration Hall | 📍 Hall 01
-                                </p>
-                            </div>
-                        </div>
-                        <div className="col-sm  d-flex  justify-content-center">
-                            <div className="speaker-info m-3 d-flex align-items-center ">
-                                <img
-                                    className="round-img"
-                                    src="./images/img-4.jpg"
-                                    alt="Speaker Image"
-                                />
-                                <div>
-                                    <h5 className="speaker-name">Jesus Holland</h5>
-                                    <p className="text-secondary">Host &amp; Speaker</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ConferenceCard />
                     <hr />
-                    <div className="row bg-light">
-                        <div className="col-sm">
-                            <div
-                                className="timing m-3 text-white card d-flex justify-content-center"
-                                style={{ backgroundColor: "#ff4081", height: 170 }}
-                            >
-                                <p>8:00 AM - 9:00 AM</p>
-                                <h4>Opening Ceremony</h4>
-                            </div>
-                        </div>
-                        <div className="col-sm">
-                            <div className="event-details m-3">
-                                <h3 className="text-primary">Introduce The Event</h3>
-                                <p className="text-secondary">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                                </p>
-                                <p className="location text-primary">
-                                    📍 Exploration Hall | 📍 Hall 01
-                                </p>
-                            </div>
-                        </div>
-                        <div className="col-sm  d-flex  justify-content-center">
-                            <div className="speaker-info m-3 d-flex align-items-center ">
-                                <img
-                                    className="round-img"
-                                    src="./images/img-4.jpg"
-                                    alt="Speaker Image"
-                                />
-                                <div>
-                                    <h5 className="speaker-name">Jesus Holland</h5>
-                                    <p className="text-secondary">Host &amp; Speaker</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ConferenceCard />
                     <hr />
-                    <div className="row bg-light">
-                        <div className="col-sm">
-                            <div
-                                className="timing m-3 text-white card d-flex justify-content-center"
-                                style={{ backgroundColor: "#ff4081", height: 170 }}
-                            >
-                                <p>8:00 AM - 9:00 AM</p>
-                                <h4>Opening Ceremony</h4>
-                            </div>
-                        </div>
-                        <div className="col-sm">
-                            <div className="event-details m-3">
-                                <h3 className="text-primary">Introduce The Event</h3>
-                                <p className="text-secondary">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                                </p>
-                                <p className="location text-primary">
-                                    📍 Exploration Hall | 📍 Hall 01
-                                </p>
-                            </div>
-                        </div>
-                        <div className="col-sm  d-flex  justify-content-center">
-                            <div className="speaker-info m-3 d-flex align-items-center ">
-                                <img
-                                    className="round-img"
-                                    src="./images/img-4.jpg"
-                                    alt="Speaker Image"
-                                />
-                                <div>
-                                    <h5 className="speaker-name">Jesus Holland</h5>
-                                    <p className="text-secondary">Host &amp; Speaker</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ConferenceCard />
                 </div>
                 {/* Event Conference Organisation End */}
                 {/* Featured Speaker Start */}
@@ -506,38 +353,8 @@ function home() {
                             </div>
                         </div>
                         <div className="mt-5">
-                            <div className="row mb-4">
-                                <div className="col-lg-6 mx-auto">
-                                    {/* Card 1 */}
-                                    <div className="card p-0 d-flex flex-row align-items-center">
-                                        <div className="icon-box">
-                                            <i className="fa fa-calendar" style={{ fontSize: 40 }} />
-                                        </div>
-                                        <div className="me-4">
-                                            <p className="mb-0">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                                                elit tellus, luctus nec ullamcorper mattis
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row mb-4">
-                                <div className="col-lg-6 mx-auto">
-                                    {/* Card 2 */}
-                                    <div className="card p-0 d-flex flex-row align-items-center">
-                                        <div className="icon-box">
-                                            <i className="fa fa-list" style={{ fontSize: 40 }} />
-                                        </div>
-                                        <div>
-                                            <p className="mb-0">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                                                elit tellus, luctus nec ullamcorper mattis
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <JoinExpoCard />
+                            <JoinExpoCard />
                         </div>
                     </div>
                     <div className="container video-container">
@@ -564,59 +381,7 @@ function home() {
                             </h1>
                         </div>
                     </div>
-                    <div className="row mt-4">
-                        <div className="col-sm">
-                            <div className="image-section d-flex align-items-center justify-content-center">
-                                <img
-                                    className="event-gallery"
-                                    src="./images/Event Gallery-1.jpg"
-                                    alt="Event Image 2"
-                                />
-                            </div>
-                            {/* ----------------------- */}
-                            <div className="mt-4 image-section d-flex align-items-center justify-content-center">
-                                <img
-                                    className="event-gallery"
-                                    src="./images/Event Gallery-2.jpg"
-                                    alt="Event Image 3"
-                                />
-                            </div>
-                        </div>
-                        <div className="col-sm">
-                            <div className="image-section d-flex align-items-center justify-content-center">
-                                <img
-                                    className="event-gallery"
-                                    src="./images/Event Gallery-2.jpg"
-                                    alt="Event Image 2"
-                                />
-                            </div>
-                            {/* ----------------------- */}
-                            <div className="mt-4 image-section d-flex align-items-center justify-content-center">
-                                <img
-                                    className="event-gallery"
-                                    src="./images/Event Gallery-1.jpg"
-                                    alt="Event Image 3"
-                                />
-                            </div>
-                        </div>
-                        <div className="col-sm">
-                            <div className="image-section d-flex align-items-center justify-content-center">
-                                <img
-                                    className="event-gallery"
-                                    src="./images/Event Gallery-1.jpg"
-                                    alt="Event Image 2"
-                                />
-                            </div>
-                            {/* ----------------------- */}
-                            <div className="mt-4 image-section d-flex align-items-center justify-content-center">
-                                <img
-                                    className="event-gallery"
-                                    src="./images/Event Gallery-2.jpg"
-                                    alt="Event Image 3"
-                                />
-                            </div>
-                        </div>
-                    </div>
+                    <EventSnapshots />
                 </div>
                 {/* Event Gallery End */}
                 {/* Our Testimonials Start */}
