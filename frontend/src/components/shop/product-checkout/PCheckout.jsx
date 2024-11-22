@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-function PCheckout() {
 
+function PCheckout() {
     const [cart, setCart] = useState([]);
     const [subtotal, setSubtotal] = useState(0);
 
@@ -15,7 +15,18 @@ function PCheckout() {
     };
 
     const calculateSubtotal = (cartItems) => {
-        const subtotalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        const subtotalAmount = cartItems.reduce((acc, item) => {
+            // Ensure that both price and quantity are valid numbers before adding
+            const price = parseFloat(item.price);
+            const quantity = parseInt(item.quantity, 10);
+
+            // If either price or quantity is invalid, default them to 0
+            if (!isNaN(price) && !isNaN(quantity)) {
+                return acc + (price * quantity);
+            }
+            return acc;
+        }, 0);
+
         setSubtotal(subtotalAmount);
     };
 
@@ -55,8 +66,8 @@ function PCheckout() {
                                 <label htmlFor="country" className="form-label">
                                     Country / Region <span className="text-danger">*</span>
                                 </label>
-                                <select className="form-select" id="country">
-                                    <option selected="">India</option>
+                                <select className="form-select" id="country" defaultValue="India">
+                                    <option value="India">India</option>
                                 </select>
                             </div>
                             <div className="mb-3">
@@ -143,21 +154,28 @@ function PCheckout() {
                                     </tr>
                                 </thead>
                                 <tbody id="order-summary">
-                                    {cart.map((item, index) => (
-                                        <tr key={index}>
-                                            <td>{item.product_name} × {item.quantity}</td>
-                                            <td>${(item.price * item.quantity).toFixed(2)}</td>
-                                        </tr>
-                                    ))}
+                                    {cart.map((item, index) => {
+                                        // Parse price and quantity to ensure no NaN value
+                                        const price = parseFloat(item.price);
+                                        const quantity = parseInt(item.quantity, 10);
+                                        // Check for valid price and quantity
+                                        const itemSubtotal = (!isNaN(price) && !isNaN(quantity)) ? (price * quantity) : "0.00";
+                                        return (
+                                            <tr key={index}>
+                                                <td>{item.product_name} × {item.quantity}</td>
+                                                <td>${itemSubtotal}</td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Subtotal</th>
-                                        <th id="subtotal-price">${subtotal.toFixed(2)}</th>
+                                        <th id="subtotal-price">${subtotal}</th>
                                     </tr>
                                     <tr>
                                         <th>Total</th>
-                                        <th id="total-price">${subtotal.toFixed(2)}</th>
+                                        <th id="total-price">${subtotal}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -183,9 +201,8 @@ function PCheckout() {
                     </div>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
 
-export default PCheckout
+export default PCheckout;

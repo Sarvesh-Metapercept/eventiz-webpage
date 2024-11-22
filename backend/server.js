@@ -11,12 +11,31 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // API endpoint to fetch all products
+// app.get('/api/products', (req, res) => {
+//     fs.readFile('./productListData.json', 'utf8', (err, data) => {
+//         if (err) {
+//             return res.status(500).send('Error reading file');
+//         }
+//         res.json(JSON.parse(data));
+//     });
+// });
+////////////////////////////////////////////////
 app.get('/api/products', (req, res) => {
+    const page = parseInt(req.query.page) || 1; // Default to 1 if no page is provided
+    const limit = parseInt(req.query.limit) || 10; // Default to 10 products per page
+    const startIndex = (page - 1) * limit;
+    
     fs.readFile('./productListData.json', 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send('Error reading file');
         }
-        res.json(JSON.parse(data));
+        const products = JSON.parse(data);
+        const totalCount = products.length;
+        const paginatedProducts = products.slice(startIndex, startIndex + limit); // Get 10 products for current page
+        res.json({
+            products: paginatedProducts,
+            totalCount // Include total count in the response
+        });
     });
 });
 

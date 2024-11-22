@@ -79,7 +79,7 @@ function PCart() {
                                                     <img src={item.product_image} className="img-fluid" alt={item.product_name} />
                                                 </td>
                                                 <td className="align-middle">{item.product_name}</td>
-                                                <td className="align-middle">${item.price.toFixed(2)}</td>
+                                                <td className="align-middle">${item.price}</td>
                                                 <td className="align-middle">
                                                     <input
                                                         type="number"

@@ -1,4 +1,5 @@
-export const JoinExpoCard = () => {
+import React from 'react'
+export const JoinExpoCard = ({ iconClass, text }) => {
     return (
         <div>
             <div className="row mb-4">
@@ -6,13 +7,10 @@ export const JoinExpoCard = () => {
                     {/* Card 1 */}
                     <div className="card p-0 d-flex flex-row align-items-center">
                         <div className="icon-box">
-                            <i className="fa fa-calendar" style={{ fontSize: 40 }} />
+                            <i className={iconClass} style={{ fontSize: 40 }} />
                         </div>
                         <div className="me-4">
-                            <p className="mb-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                                elit tellus, luctus nec ullamcorper mattis
-                            </p>
+                            <p className="mb-0">{text}</p>
                         </div>
                     </div>
                 </div>
@@ -20,3 +18,5 @@ export const JoinExpoCard = () => {
         </div>
     )
 }
+
+

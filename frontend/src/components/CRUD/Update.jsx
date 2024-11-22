@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Added axios import
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 function Update() {
     const [product, setProduct] = useState({
@@ -8,37 +9,41 @@ function Update() {
         product_image: '',
     });
 
-    const location = useLocation();
-    const navigate = useNavigate(); // Replacing useHistory with useNavigate
-    const productId = new URLSearchParams(location.search).get('id'); // Extract product ID from query string
+    const [searchParams] = useSearchParams(); // Using useSearchParams for query string
+    const navigate = useNavigate();
+
+    const productId = searchParams.get('id'); // Extract product ID from query string
 
     // Fetch the product data based on the product ID
+    // Updated Start
     useEffect(() => {
         if (productId) {
-            fetch(`https://eventiz-webpage-backend.onrender.com/api/products/${productId}`)
-                .then(response => response.json())
-                .then(data => setProduct(data))
-                .catch(error => console.error('Error fetching product:', error));
+            axios
+                .get(`http://localhost:5000/api/products/${productId}`)
+                .then((response) => setProduct(response.data))
+                .catch((error) => console.error('Error fetching product:', error));
         }
     }, [productId]);
+    // Updated End
 
     // Handle form submission to update the product
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`https://eventiz-webpage-backend.onrender.com/api/products/${productId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(product),
-        })
-            .then(response => {
-                if (response.ok) {
+        // Updated Start
+        axios
+            .put(`http://localhost:5000/api/products/${productId}`, product, {
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then((response) => {
+                if (response.status === 200) {
                     navigate('/view-all'); // Redirect to the product list page after updating
                 } else {
                     console.error('Error updating product');
                 }
             })
-            .catch(error => console.error('Error:', error));
+            .catch((error) => console.error('Error:', error));
+        // Updated End
     };
 
     // Handle input change
@@ -48,7 +53,7 @@ function Update() {
     };
 
     return (
-        <div className="container">
+        <div className="container mt-4 mb-4">
             <h3>Update Product</h3>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">

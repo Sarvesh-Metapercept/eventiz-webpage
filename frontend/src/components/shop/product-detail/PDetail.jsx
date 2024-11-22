@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import axios from 'axios';  // Added axios import
 
 function PDetail() {
     const [product, setProduct] = useState(null);
     const [messageVisible, setMessageVisible] = useState(false);
-    const [mainImage, setMainImage] = useState(''); 
+    const [mainImage, setMainImage] = useState('');
 
     const location = useLocation();
-    const productId = new URLSearchParams(location.search).get('id');  
+    const productId = new URLSearchParams(location.search).get('id'); // Extract `id` from the URL query string.
 
     useEffect(() => {
         if (!productId) {
@@ -15,19 +16,17 @@ function PDetail() {
             return;
         }
 
-        fetch('https://eventiz-webpage-backend.onrender.com/api/products')
-            .then(response => response.json())
-            .then(products => {
-                const foundProduct = products.find(p => p.id == productId);
-
-                if (foundProduct) {
-                    setProduct(foundProduct);
-                    setMainImage(foundProduct.product_image);  
-                } else {
-                    setProduct(null); 
-                }
+        // Updated Start: Replaced fetch with axios
+        axios.get(`http://localhost:5000/api/products/${productId}`)
+            .then(response => {
+                setProduct(response.data);
+                setMainImage(response.data.product_image); // Set main image to product's main image
             })
-            .catch(error => console.error('Error loading JSON:', error));
+            .catch(error => {
+                console.error('Error loading product:', error);
+                setProduct(null);  // Clear product state on error
+            });
+        // Updated End
     }, [productId]);
 
     const addToCart = () => {
@@ -39,7 +38,7 @@ function PDetail() {
     };
 
     const handleThumbnailClick = (image) => {
-        setMainImage(image); 
+        setMainImage(image); // Change main image on thumbnail click
     };
 
     if (!product) {
@@ -48,7 +47,6 @@ function PDetail() {
 
     return (
         <div className="container my-5">
-            {/* Product Section */}
             <div className="row">
                 <div className="col-md-6 text-center">
                     <div id="product-image-section">
@@ -56,34 +54,18 @@ function PDetail() {
                     </div>
                     <div className="d-flex justify-content-center mt-3">
                         {/* Thumbnails */}
-                        <img
-                            src="https://eventizvue.htmldesigntemplates.com/assets/Travel%20Bag.H03.2k-IPt6QVG_.png"
-                            className="thumbnail-img"
-                            alt="Thumbnail 1"
-                            onClick={() => handleThumbnailClick("https://eventizvue.htmldesigntemplates.com/assets/Travel%20Bag.H03.2k-IPt6QVG_.png")}
-                        />
-                        <img
-                            src="https://eventizvue.htmldesigntemplates.com/assets/Yellow%20Cloth%20Puff.H03.2k-0XMVapxE.png"
-                            className="thumbnail-img"
-                            alt="Thumbnail 2"
-                            onClick={() => handleThumbnailClick("https://eventizvue.htmldesigntemplates.com/assets/Yellow%20Cloth%20Puff.H03.2k-0XMVapxE.png")}
-                        />
-                        <img
-                            src="https://eventizvue.htmldesigntemplates.com/assets/Travel%20Bag.H03.2k-IPt6QVG_.png"
-                            className="thumbnail-img"
-                            alt="Thumbnail 3"
-                            onClick={() => handleThumbnailClick("https://eventizvue.htmldesigntemplates.com/assets/Travel%20Bag.H03.2k-IPt6QVG_.png")}
-                        />
-                        <img
-                            src="https://eventizvue.htmldesigntemplates.com/assets/Yellow%20Cloth%20Puff.H03.2k-0XMVapxE.png"
-                            className="thumbnail-img"
-                            alt="Thumbnail 4"
-                            onClick={() => handleThumbnailClick("https://eventizvue.htmldesigntemplates.com/assets/Yellow%20Cloth%20Puff.H03.2k-0XMVapxE.png")}
-                        />
+                        {product.additional_images && product.additional_images.map((image, index) => (
+                            <img
+                                key={index}
+                                src={image}
+                                className="thumbnail-img"
+                                alt={`Thumbnail ${index + 1}`}
+                                onClick={() => handleThumbnailClick(image)}
+                            />
+                        ))}
                     </div>
                 </div>
 
-                {/* Product Details */}
                 <div className="col-md-6">
                     <h1 className="product-title">{product.product_name}</h1>
                     <p>{product.description}</p>
@@ -96,7 +78,7 @@ function PDetail() {
                     <p>
                         <strong>Category:</strong> {product.category || 'Clothes'}
                     </p>
-                    <p className="product-price clr">${product.price.toFixed(2)}</p>
+                    <p className="product-price clr">${product.price}</p>
                     <div className="input-group my-3">
                         <div className="input-group-append">
                             <button

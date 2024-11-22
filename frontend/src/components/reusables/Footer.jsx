@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     const socialLinks = [
@@ -11,8 +12,8 @@ function Footer() {
     const quickLinks = [
         { href: '/about-us', text: 'About Us' },
         { href: '/services', text: 'Services' },
-        { href: '/speakers', text: 'Speakers' },
-        { href: '/schedule', text: 'Schedule' },
+        // { href: '/speakers', text: 'Speakers' },
+        // { href: '/schedule', text: 'Schedule' },
         { href: '/ticket-pricing', text: 'Ticket Pricing' },
         { href: '/contact-us', text: 'Contact Us' },
     ];
@@ -20,16 +21,16 @@ function Footer() {
     return (
         <div>
             <footer>
-                <div className="ftr-bg">
+                <div className="ftr-bg pb-3">
                     <div className="container">
                         <div className="row text-white">
                             <div className="col-sm mt-5">
-                                <a className="navbar-brand" href="./index.html">
+                                <Link className="navbar-brand" to="/">
                                     <img
                                         src="https://htmldesigntemplates.com/html/eventiz/images/logo-white.png"
                                         alt=""
                                     />
-                                </a>
+                                </Link>
                                 <p className="mt-3">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
                                     suspendisse leo neque iaculis molestie sagittis maecenas aenean
@@ -42,26 +43,27 @@ function Footer() {
                                             className="d-flex align-items-center justify-content-center bg-white"
                                             style={{ width: 40, height: 40, borderRadius: 8 }}
                                         >
-                                            <a href={link.href}>
+                                            <Link to={link.href}>
                                                 <i
                                                     className={`fa ${link.icon}`}
                                                     style={{ fontSize: 24, color: link.color }}
                                                 />
-                                            </a>
+                                            </Link>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="col-sm mt-5 ms-5">
+                            <div className="container col-sm mt-5">
                                 <h4>Quick Links</h4>
                                 {quickLinks.map((link, index) => (
                                     <p key={index}>
-                                        <a href={link.href} className="text-white text-decoration-none">
+                                        <Link to={link.href} className="text-white text-decoration-none">
                                             &gt; {link.text}
-                                        </a>
+                                        </Link>
                                     </p>
                                 ))}
                             </div>
+
                             <div className="col-sm mt-5">
                                 <h4>Get In Touch</h4>
                                 <p className="mt-3">
@@ -72,12 +74,12 @@ function Footer() {
                                         className="d-flex align-items-center justify-content-center bg-white"
                                         style={{ width: 40, height: 40, borderRadius: 8 }}
                                     >
-                                        <a href="tel:+1234567890">
+                                        <Link to="tel:+1234567890">
                                             <i
                                                 className="fa fa-phone"
                                                 style={{ fontSize: 24, color: "#3b5998" }}
                                             />
-                                        </a>
+                                        </Link>
                                     </div>
                                     <span className="ms-2" style={{ fontSize: 18 }}>
                                         123 567 5890
@@ -89,12 +91,12 @@ function Footer() {
                                         className="d-flex align-items-center justify-content-center bg-white"
                                         style={{ width: 40, height: 40, borderRadius: 8 }}
                                     >
-                                        <a href="mailto:Info@Eventiz.Com">
+                                        <Link to="mailto:Info@Eventiz.Com">
                                             <i
                                                 className="fa fa-envelope"
                                                 style={{ fontSize: 24, color: "#3b5998" }}
                                             />
-                                        </a>
+                                        </Link>
                                     </div>
                                     <span className="ms-2" style={{ fontSize: 18 }}>
                                         Info@Eventiz.Com
@@ -114,9 +116,9 @@ function Footer() {
                                     <br />
                                 </form>
                                 <div className="mt-3">
-                                    <a href="#" className="a-tag">
+                                    <Link to="#" className="a-tag">
                                         Subscribe
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

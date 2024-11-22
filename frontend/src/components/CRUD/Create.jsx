@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Added axios import
 import { useNavigate } from 'react-router-dom';
 
 function Create() {
@@ -14,23 +15,22 @@ function Create() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('https://eventiz-webpage-backend.onrender.com/api/products', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
+        // Updated Start
+        axios
+            .post('http://localhost:5000/api/products/', {
                 ...product,
                 id: Number(product.id),  // Convert ID and Price to numbers
                 price: Number(product.price),
-            }),
-        })
-        .then(response => {
-            if (response.ok) {
-                navigate('/view-all');
-            } else {
-                console.error('Error adding product', response.status);
-            }
-        })
-        .catch(error => console.error('Error:', error));
+            })
+            .then((response) => {
+                if (response.status === 201) {  // Assuming 201 is the success status for creation
+                    navigate('/view-all');
+                } else {
+                    console.error('Error adding product', response.status);
+                }
+            })
+            .catch((error) => console.error('Error:', error));
+        // Updated End
     };
 
     const handleChange = (e) => {
@@ -39,7 +39,7 @@ function Create() {
     };
 
     return (
-        <div className="container">
+        <div className="container mt-4 mb-4">
             <h3>Add New Product</h3>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">

@@ -1,32 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios'; // Added axios import
 
 function ProductList() {
     const [products, setProducts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1); // Current page
+    const [totalPages, setTotalPages] = useState(1); // Total pages
+    const itemsPerPage = 10; // Items per page
+
+    // Function to fetch products from the server
+    const fetchProducts = (page) => {
+        // Replaced fetch with axios
+        axios.get(`http://localhost:5000/api/products?page=${page}&limit=${itemsPerPage}`)
+            .then((response) => {
+                setProducts(response.data.products); // Update the products list
+                setTotalPages(Math.ceil(response.data.totalCount / itemsPerPage)); // Update total pages
+            })
+            .catch((error) => {
+                console.error('Error loading products:', error);
+            });
+    };
 
     useEffect(() => {
-        fetch('https://eventiz-webpage-backend.onrender.com/api/products')
-            .then(response => response.json())
-            .then(data => setProducts(data))
-            .catch(error => console.error('Error loading JSON:', error));
-    }, []);
-
-    const itemsPerPage = 10; // Items per page
-    const [currentPage, setCurrentPage] = useState(1); // Current page
-    const totalPages = Math.ceil(products.length / itemsPerPage); // Total number of pages
-
-    // Function to get the products for the current page
-    const paginateProducts = () => {
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        return products.slice(startIndex, endIndex);
-    };
+        fetchProducts(currentPage); // Fetch products when the current page changes
+    }, [currentPage]);
 
     // Function to handle page change
     const handlePageChange = (page) => {
-        setCurrentPage(page);
+        if (page > 0 && page <= totalPages) {
+            setCurrentPage(page);
+        }
     };
+
     return (
         <div>
             <div className="container my-5">
@@ -34,7 +39,7 @@ function ProductList() {
                     {/* Main Shopping Cards */}
                     <div className="col-md-8">
                         <div id="product-container" className="row">
-                            {paginateProducts().map((product) => (
+                            {products.map((product) => (
                                 <div key={product.id} className="col-md-6 mb-4">
                                     <div className="card">
                                         <Link
@@ -48,7 +53,7 @@ function ProductList() {
                                             />
                                             <div className="card-body text-center">
                                                 <h5 className="card-title">{product.product_name}</h5>
-                                                <h5 className="clr">${product.price.toFixed(2)}</h5>
+                                                <h5 className="clr">${product.price}</h5>
                                             </div>
                                         </Link>
                                         <Link
@@ -100,6 +105,7 @@ function ProductList() {
                             </nav>
                         </div>
                     </div>
+
                     {/* Sidebar */}
                     <div className="col-md-4">
                         <form className="d-flex" role="search">
@@ -182,7 +188,7 @@ function ProductList() {
                                     height={60}
                                     className="me-3"
                                     alt="Yellow Sofa Set"
-                            />
+                                />
                                 <div>
                                     <p className="mb-0">Leather Bag</p>
                                     <small>10 Apr 2023</small>
@@ -224,52 +230,15 @@ function ProductList() {
                                 />
                                 <div>
                                     <p className="mb-0">Bamboo Bucket</p>
-                                    <small>10 Apr 2023</small>
-                                </div>
-                            </div>
-                            <div className="recent-item d-flex align-items-center mb-3">
-                                <img
-                                    src="https://htmldesigntemplates.com/html/eventiz/images/products/Travel%20Bag.H03.2k.png"
-                                    width={60}
-                                    height={60}
-                                    className="me-3"
-                                    alt="Yellow Sofa Set"
-                                />
-                                <div>
-                                    <p className="mb-0">Leather Bag</p>
-                                    <small>10 Apr 2023</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Social Media Links */}
-                        <div className="sidebar mt-4">
-                            <h5>Social Media</h5>
-                            <div className="row mt-3">
-                                <div className="col-sm">
-                                    <a href="#" className="social-btn social-facebook">
-                                        Facebook
-                                    </a>
-                                    <a href="#" className="social-btn social-twitter">
-                                        Twitter
-                                    </a>
-                                </div>
-                                <div className="col-sm">
-                                    <a href="#" className="social-btn social-instagram">
-                                        Instagram
-                                    </a>
-                                    <a href="#" className="social-btn social-linkedin">
-                                        LinkedIn
-                                    </a>
+                                    <small>10 Apr 202enrgsbsfdsdsf 23</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
 
-export default ProductList
+export default ProductList;
